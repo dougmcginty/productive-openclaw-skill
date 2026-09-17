@@ -1,11 +1,11 @@
 ---
 name: productive
-description: Explicit-only Productive.io timesheet helper for Steve. Use only when Steve explicitly asks to use Productive, productive.io, or his Productive timesheet.
+description: Explicit-only Productive.io timesheet helper for the primary OpenClaw user. Use only when the user explicitly asks to use Productive, productive.io, or their Productive timesheet.
 ---
 
 # Productive.io Timesheets
 
-Use this skill only when Steve explicitly asks for Productive/Productive.io timesheet work. Do not invoke it implicitly for generic time-tracking requests, Toggl work, calendars, invoices, or project planning.
+Use this skill only when the primary OpenClaw user explicitly asks for Productive/Productive.io timesheet work. Do not invoke it implicitly for generic time-tracking requests, Toggl work, calendars, invoices, or project planning.
 
 This skill wraps a local stdlib Python CLI:
 
@@ -23,7 +23,7 @@ Optional:
 
 - `PRODUCTIVE_API_BASE`, defaults to `https://api.productive.io/api/v2`
 
-Never ask Steve to paste API tokens into chat. If credentials are missing, tell him which environment variable is missing and that it should be configured locally.
+Never ask the user to paste API tokens into chat. If credentials are missing, tell them which environment variable is missing and that it should be configured locally.
 
 ## Common Commands
 
@@ -33,7 +33,7 @@ Check configuration without making an API call:
 python3 ~/.openclaw/workspace/skills/productive/scripts/productive_cli.py env-check
 ```
 
-List Steve's scheduled bookings for a date range:
+List the configured Productive person's scheduled bookings for a date range:
 
 ```bash
 python3 ~/.openclaw/workspace/skills/productive/scripts/productive_cli.py scheduled \
@@ -73,6 +73,6 @@ python3 ~/.openclaw/workspace/skills/productive/scripts/productive_cli.py add-ti
 
 - Productive time entries require `service_id`, `person_id`, `date`, and `time` in minutes.
 - Scheduled work is pulled from Productive bookings filtered by `PRODUCTIVE_PERSON_ID`.
-- Prefer `scheduled` first when Steve asks to add time to a project he is scheduled on. Use the booking's `service_id` for the time entry.
-- If service lookup returns multiple plausible services, stop and ask Steve to choose. Do not guess and create time.
+- Prefer `scheduled` first when the user asks to add time to a project they are scheduled on. Use the booking's `service_id` for the time entry.
+- If service lookup returns multiple plausible services, stop and ask the user to choose. Do not guess and create time.
 - Always confirm the project/service, date, duration, and note after creating a time entry.
