@@ -1,0 +1,6 @@
+interface:
+  display_name: "Productive"
+  short_description: "Update Productive timesheets"
+  default_prompt: "Use $productive to add time to my Productive timesheet."
+policy:
+  allow_implicit_invocation: false
